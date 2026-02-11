@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: This only runs on main
-        run: echo "Hello from Main branch!"
+        run: echo "Hello from Main branch💛"
