@@ -2,7 +2,7 @@ name: debug-new-features
 
 on:
   push:
-    branches: [ "main", "develop", "feature/*" ]
+    branches: ["main", "develop", "feature/*"]
   workflow_dispatch:
 
 jobs:
@@ -26,4 +26,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Feature branch specific job
-        run: echo "This is a feature branch workflow."
+        run: echo "This is a feature branch workflow.💛"
