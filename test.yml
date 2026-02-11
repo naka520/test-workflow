@@ -1,0 +1,3 @@
+- name: Display branch specific message
+  run: |
+    echo "${{ github.ref_name == 'main' && 'Production環境へデプロイを開始します' || (github.ref_name == 'develop' && 'Staging環境でテストを実行します' || 'ローカルブランチで作業中です') }}"
