@@ -2,12 +2,12 @@ name: test-workflow
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "develop", "*" ] 
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: branch check
+      - name: Display branch specific message
         run: |
-          echo "${{ case(github.ref_name, 'main', 'これは本番用です', 'develop', 'これは開発用です', 'その他のブランチです') }}"
+          echo "${{ github.ref_name == 'main' && 'Production環境へデプロイを開始します' || (github.ref_name == 'develop' && 'Staging環境でテストを実行します' || 'ローカルブランチで作業中です') }}"
