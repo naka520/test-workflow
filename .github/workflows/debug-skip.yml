@@ -2,28 +2,13 @@ name: debug-new-features
 
 on:
   push:
-    branches: [ "main", "develop", "feature/*" ]
+    branches: ["main", "develop", "feature/*"]
   workflow_dispatch:
 
 jobs:
-  expression-test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check Branch logic using case
-        run: |
-          echo "Current Branch: ${{ github.ref_name }}"
-          echo "Logic Result: ${{ case(github.ref_name == 'main', '🚀 Production Mode', github.ref_name == 'develop', '🧪 Staging Mode', '🛠️ Development Mode') }}"
-
   skip-reason-test:
     if: ${{ github.ref_name == 'main' }}
     runs-on: ubuntu-latest
     steps:
       - name: This only runs on main
         run: echo "Hello from Main branch!"
-
-  complex-condition-test:
-    if: ${{ case(github.event_name == 'push' && contains(github.ref_name, 'feature'), true, false) }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Feature branch specific job
-        run: echo "This is a feature branch workflow."
